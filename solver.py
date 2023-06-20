@@ -10,7 +10,14 @@ load_dotenv()
 # get auth from .env file
 token = os.getenv("GITHUB_TOKEN")
 if not token:
-    token = input("Enter your github token: ")
+    try:
+        token = open("token.txt", "r").read()
+    except FileNotFoundError:
+        token_file = open("token.txt", "w")
+        token = input("Enter your github token: ")
+        token_file.write(token)
+        token_file.close()
+
 
 g = Github(token)
 

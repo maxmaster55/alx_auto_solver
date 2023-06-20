@@ -7,6 +7,16 @@ from tqdm import tqdm
 
 load_dotenv()
 
+# get username from username.txt file
+try:
+    username = open("username.txt", "r").read()
+except FileNotFoundError:
+    username_file = open("username.txt", "w")
+    username = input("Enter your username: ")
+    username_file.write(username)
+    username_file.close()
+
+
 # get auth from .env file
 token = os.getenv("GITHUB_TOKEN")
 if not token:
@@ -40,14 +50,6 @@ option, index = pick(names, indicator="=>",
 # get files in selected folder
 files = sol_repo.get_contents(names[index])
 
-# get username from user
-try:
-    username = open("username.txt", "r").read()
-except FileNotFoundError:
-    username_file = open("username.txt", "w")
-    username = input("Enter your username: ")
-    username_file.write(username)
-    username_file.close()
 # create a folder in my remote repo
 my_repo = g.get_repo(f"{username}/alx-low_level_programming")
 

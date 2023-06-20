@@ -34,7 +34,8 @@ sol_repo = g.get_repo(repos[index])
 folders = sol_repo.get_contents(".")
 
 names = [i.name for i in folders if i.type == "dir"]
-option, index = pick(names, "Please choose a project to solve: ")
+option, index = pick(names, indicator=True,
+                     title="Please choose a project to solve: ")
 
 # get files in selected folder
 files = sol_repo.get_contents(names[index])

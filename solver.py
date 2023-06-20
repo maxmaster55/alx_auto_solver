@@ -46,7 +46,7 @@ try:
 except FileNotFoundError:
     username_file = open("username.txt", "w")
     username = input("Enter your username: ")
-    username_file.write(token)
+    username_file.write(username)
     username_file.close()
 # create a folder in my remote repo
 my_repo = g.get_repo(f"{username}/alx-low_level_programming")

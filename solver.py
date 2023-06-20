@@ -41,8 +41,13 @@ option, index = pick(names, indicator=True,
 files = sol_repo.get_contents(names[index])
 
 # get username from user
-username = input("Enter your github username: ")
-
+try:
+    username = open("username.txt", "r").read()
+except FileNotFoundError:
+    username_file = open("username.txt", "w")
+    username = input("Enter your username: ")
+    username_file.write(token)
+    username_file.close()
 # create a folder in my remote repo
 my_repo = g.get_repo(f"{username}/alx-low_level_programming")
 

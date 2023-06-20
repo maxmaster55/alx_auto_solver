@@ -10,3 +10,8 @@ git clone https://github.com/maxmaster55/alx_auto_solver.git
 cd alx_auto_solver
 pip install -r req.txt
 ```
+
+# to run 
+```
+python solver.py
+```

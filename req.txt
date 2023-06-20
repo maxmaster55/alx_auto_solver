@@ -1,4 +1,4 @@
 tqdm
 PyGithub
-dotenv
+python-dotenv
 pick

@@ -28,8 +28,11 @@ option, index = pick(names, "Please choose a project to solve: ")
 # get files in selected folder
 files = sol_repo.get_contents(names[index])
 
+# get username from user
+username = input("Enter your github username: ")
+
 # create a folder in my remote repo
-my_repo = g.get_repo("maxmaster55/alx-low_level_programming")
+my_repo = g.get_repo(f"{username}/alx-low_level_programming")
 
 # add a new folder to my repo with tqdm progress bar
 print("Creating folder in your repo...")

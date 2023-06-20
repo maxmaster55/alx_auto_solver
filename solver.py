@@ -54,8 +54,12 @@ my_repo = g.get_repo(f"{username}/alx-low_level_programming")
 # add a new folder to my repo with tqdm progress bar
 print("Creating folder in your repo...")
 for i in tqdm(files):
-    my_repo.create_file(
-        f"{option}/{i.name}",
-        f"Added {i.name}",
-        i.decoded_content)
+    # check if file is already in my repo
+    try:
+        my_repo.get_contents(f"{option}/{i.name}")
+    except:
+        my_repo.create_file(
+            f"{option}/{i.name}",
+            f"Added {i.name}",
+            i.decoded_content)
 print("Done!")

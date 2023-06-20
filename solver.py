@@ -8,7 +8,11 @@ from tqdm import tqdm
 load_dotenv()
 
 # get auth from .env file
-g = Github(os.getenv("GITHUB_TOKEN"))
+token = os.getenv("GITHUB_TOKEN")
+if not token:
+    token = input("Enter your github token: ")
+
+g = Github(token)
 
 repos = ["BrightDaniel/alx-low_level_programming",
          "iAmG-r00t/alx-system_engineering-devops"]
